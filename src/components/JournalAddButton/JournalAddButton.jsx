@@ -1,9 +1,9 @@
-import './JournalAddButton.css';
+import styles from './JournalAddButton.module.css';
 import CardButton from '../CardButton/CardButton.jsx';
 
 function JournalAddButton() {
 	return (
-		<CardButton className="journal-add">
+		<CardButton className={styles['journal-add']}>
 			<b>+</b> Новое воспоминание
 		</CardButton>
 	);

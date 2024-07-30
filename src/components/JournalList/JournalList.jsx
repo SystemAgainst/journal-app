@@ -1,4 +1,4 @@
-import './JournalList.css';
+import './JournalList.module.css';
 
 function JournalList({ children }) {
 	return (

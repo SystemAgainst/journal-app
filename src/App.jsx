@@ -1,4 +1,4 @@
-import './App.css';
+import { wrapper } from './App.module.css';
 import JournalItem from './components/JournalItem/JournalItem.jsx';
 import CardButton from './components/CardButton/CardButton.jsx';
 import LeftPanel from './layouts/LeftPanel/LeftPanel.jsx';
@@ -35,7 +35,7 @@ function App() {
 	};
 
 	return (
-		<div className="app">
+		<div className={wrapper}>
 			<LeftPanel>
 				<Header/>
 				<JournalAddButton/>
