@@ -10,20 +10,7 @@ import JournalForm from './components/JournalForm/JournalForm.jsx';
 import {useState} from 'react';
 
 function App() {
-	const INITIAL_DATA = [
-		{
-			id: 1,
-			title: 'Journal Item',
-			text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum, sunt!',
-			date: new Date()
-		},
-		{
-			id: 2,
-			title: 'Подготовка к обновлению курса',
-			text: 'Lorem ipsum dolor sit amet',
-			date: new Date()
-		}
-	];
+	const INITIAL_DATA = [];
 
 	const [data, setData] = useState(INITIAL_DATA);
 
