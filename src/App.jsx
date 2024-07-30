@@ -34,9 +34,17 @@ function App() {
 				title: item.title,
 				text: item.text,
 				date: new Date(item.date),
-				id: prev.length + 1
+				id: +prev.length + 1
 			}
 		]);
+	};
+
+	const sortItems = (a, b) => {
+		if (a.date < b.date) {
+			return 1;
+		}
+
+		return -1;
 	};
 
 	return (
@@ -46,15 +54,17 @@ function App() {
 				<JournalAddButton/>
 				<JournalList>
 					{
-						data.map((item) => (
-							<CardButton key={item.id}>
-								<JournalItem 
-									title={item.title}
-									text={item.text}
-									date={item.date}
-								/>
-							</CardButton>
-						))
+						data.length === 0
+							? <p>Записей пока нет. Добавьте новую запись</p>
+							: data.sort(sortItems).map((item) => (
+								<CardButton key={item.id}>
+									<JournalItem 
+										title={item.title}
+										text={item.text}
+										date={item.date}
+									/>
+								</CardButton>
+							))
 					}
 				</JournalList>
 			</LeftPanel>
