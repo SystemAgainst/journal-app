@@ -53,18 +53,17 @@ function App() {
 				<Header/>
 				<JournalAddButton/>
 				<JournalList>
+					{ data.length === 0 && <p>Записей пока нет. Добавьте новую запись</p> }
 					{
-						data.length === 0
-							? <p>Записей пока нет. Добавьте новую запись</p>
-							: data.sort(sortItems).map((item) => (
-								<CardButton key={item.id}>
-									<JournalItem 
-										title={item.title}
-										text={item.text}
-										date={item.date}
-									/>
-								</CardButton>
-							))
+						data.length > 0 && data.sort(sortItems).map((item) => (
+							<CardButton key={item.id}>
+								<JournalItem
+									title={item.title}
+									text={item.text}
+									date={item.date}
+								/>
+							</CardButton>
+						))
 					}
 				</JournalList>
 			</LeftPanel>
