@@ -4,6 +4,27 @@
     gap: 30px;
 }
 
+.journal-form__title {
+    border: none;
+    background: none;
+    font-size: 2rem;
+    border-bottom: 1px solid #272727;
+    color: white;
+    width: 100%;
+}
+
+.journal-form__labels {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.journal-form__row {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+
 .invalid {
     border: 1px solid red;
     color: rgb(161, 38, 38);

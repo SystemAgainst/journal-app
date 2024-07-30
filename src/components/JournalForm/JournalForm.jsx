@@ -51,18 +51,26 @@ function JournalForm({ onSubmit }) {
 	return (
 		<>
 			<form className={styles['journal-form']} onSubmit={addJournalItem}>
-				<input
-					type="text"
-					name="title"
-					className={cn(styles['input'], {
-						[styles['invalid']]: !formValidState.title
-					})}
-				/>
-				<input
-					type="date"
-					name="date"
-					className={`${styles['input']} ${formValidState.date ? '' : styles['invalid']}`}
-				/>
+				<div>
+					<input
+						type="text"
+						name="title"
+						className={cn(styles['journal-form__title'], {
+							[styles['invalid']]: !formValidState.title
+						})}
+					/>
+				</div>
+				<div className={styles['journal-form__row']}>
+					<label htmlFor="date" className={styles['journal-form__label']}>
+						Дата
+					</label>
+					<input
+						type="date"
+						name="date"
+						id="date"
+						className={`${styles['input']} ${formValidState.date ? '' : styles['invalid']}`}
+					/>
+				</div>
 				<textarea
 					name="text"
 					cols="30"
