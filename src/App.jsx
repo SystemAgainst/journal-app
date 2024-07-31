@@ -13,15 +13,21 @@ function App() {
 	const [data, setData] = useState([]);
 
 	useEffect(() => {
-		const data = JSON.parse(localStorage.getItem('data'));
+		const dataFromLocalStorage = JSON.parse(localStorage.getItem('data'));
 
-		if (data) {
+		if (dataFromLocalStorage) {
 			setData(data.map((journal) => ({
 				...journal,
 				date: new Date(journal.date)
 			})));
 		}
 	}, []);
+
+	useEffect(() => {
+		if (data.length > 0) {
+			localStorage.setItem('data', JSON.stringify(data));
+		}
+	}, [data]);
 
 	const addItem = (item) => {
 		setData((prev) => [
