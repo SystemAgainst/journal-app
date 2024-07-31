@@ -1,10 +1,4 @@
-.journal-form {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-}
-
-.journal-form__title {
+.ui-input__title {
     border: none;
     background: #272727;
     font-size: 2rem;
@@ -13,24 +7,12 @@
     width: 100%;
 }
 
-.journal-form__labels {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-}
-
-.journal-form__row {
-    display: flex;
-    align-items: center;
-    gap: 50px;
-}
-
-.journal-form_invalid {
+.ui-input_invalid {
     border: 1px solid red !important;
     color: rgb(161, 38, 38) !important;
 }
 
-.journal-form__textarea {
+.ui-input {
     width: 100%;
     border: none;
     border-radius: 8px;
