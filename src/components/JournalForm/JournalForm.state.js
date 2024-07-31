@@ -22,12 +22,12 @@ export function formReducer(state, action) {
 	case 'RESET_VALIDITY':
 		return {...state, isValid: INITIAL_STATE.isValid};
 	case 'SUBMIT': {
-		const titleValidity = action.payload.title?.trim().length;
-		const textValidity = action.payload.text?.trim().length;
-		const dateValidity = action.payload.date;
+		const titleValidity = state.values.title?.trim().length;
+		const textValidity = state.values.text?.trim().length;
+		const dateValidity = state.values.date;
 
 		return {
-			values: action.payload,
+			...state,
 			isValid: {
 				title: titleValidity,
 				text: textValidity,

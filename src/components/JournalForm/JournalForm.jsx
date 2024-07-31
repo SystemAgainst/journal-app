@@ -32,12 +32,7 @@ function JournalForm({ onSubmit }) {
 
 	const addJournalItem = (e) => {
 		e.preventDefault();
-		const formData = new FormData(e.target);
-		const formProps = Object.fromEntries(formData.entries());
-
-		dispatchForm({ type: 'SUBMIT', payload: formProps });
-
-		onSubmit(formProps);
+		dispatchForm({ type: 'SUBMIT' });
 	};
 
 	const onChange = (e) => dispatchForm({ type: 'SET_VALUE', payload: { [e.target.name]: e.target.value } });
