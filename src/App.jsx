@@ -16,7 +16,7 @@ function App() {
 		const dataFromLocalStorage = JSON.parse(localStorage.getItem('data'));
 
 		if (dataFromLocalStorage) {
-			setData(data.map((journal) => ({
+			setData(dataFromLocalStorage.map((journal) => ({
 				...journal,
 				date: new Date(journal.date)
 			})));
@@ -24,7 +24,7 @@ function App() {
 	}, []);
 
 	useEffect(() => {
-		if (data.length > 0) {
+		if (data.length) {
 			localStorage.setItem('data', JSON.stringify(data));
 		}
 	}, [data]);
