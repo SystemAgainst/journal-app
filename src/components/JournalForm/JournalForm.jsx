@@ -1,6 +1,6 @@
 import styles from './JournalForm.module.css';
 import { Button } from '../Button/Button.jsx';
-import {useEffect, useReducer} from 'react';
+import {useEffect, useReducer, useRef} from 'react';
 import cn from 'classnames';
 import {formReducer, INITIAL_STATE} from './JournalForm.state.js';
 
@@ -9,10 +9,29 @@ function JournalForm({ onSubmit }) {
 
 	const { isValid, isFormReadyToSubmit, values  } = formState;
 
+	const titleRef = useRef();
+	const dateRef = useRef();
+	const textRef = useRef();
+
+	const focusError = (isValid) => {
+		switch (true) {
+		case !isValid.title:
+			titleRef.current.focus();
+			break;
+		case !isValid.date:
+			dateRef.current.focus();
+			break;
+		case isValid.text:
+			textRef.current.focus();
+			break;
+		}
+	};
+
 	useEffect(() => {
 		let timerId;
 
 		if (!isValid.date || !isValid.title || !isValid.text) {
+			focusError(isValid);
 			setTimeout(() => {
 				dispatchForm({ type: 'RESET_VALIDITY' });
 			}, 2000);
@@ -49,6 +68,7 @@ function JournalForm({ onSubmit }) {
 						})}
 						value={values.title}
 						onChange={onChange}
+						ref={titleRef}
 					/>
 				</div>
 				<div className={styles['journal-form__row']}>
@@ -62,6 +82,7 @@ function JournalForm({ onSubmit }) {
 						className={`${styles['input']} ${isValid.date ? '' : styles['invalid']}`}
 						value={values.date}
 						onChange={onChange}
+						ref={dateRef}
 					/>
 				</div>
 				<textarea
@@ -71,6 +92,7 @@ function JournalForm({ onSubmit }) {
 					className={`${styles['textarea']} ${isValid.text ? '' : styles['invalid']}`}
 					value={values.text}
 					onChange={onChange}
+					ref={textRef}
 				/>
 				<Button text="Сохранить" isAccent />
 			</form>
