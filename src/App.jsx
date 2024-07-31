@@ -7,12 +7,25 @@ import Header from './components/Header/Header.jsx';
 import JournalList from './components/JournalList/JournalList.jsx';
 import JournalAddButton from './components/JournalAddButton/JournalAddButton.jsx';
 import JournalForm from './components/JournalForm/JournalForm.jsx';
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 
 function App() {
-	const INITIAL_DATA = [];
+	const INITIAL_DATA = [
+
+	];
 
 	const [data, setData] = useState(INITIAL_DATA);
+
+	useEffect(() => {
+		const data = JSON.parse(localStorage.getItem('data'));
+
+		if (data) {
+			setData(data.map((journal) => ({
+				...journal,
+				date: new Date(journal.date)
+			})));
+		}
+	}, []);
 
 	const addItem = (item) => {
 		setData((prev) => [

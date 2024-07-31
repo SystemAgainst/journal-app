@@ -1,8 +1,8 @@
-import './JournalList.module.css';
+import style from './JournalList.module.css';
 
 function JournalList({ children }) {
 	return (
-		<div className='journal-list'>
+		<div className={style['journal-list']}>
 			{children}
 		</div>
 
