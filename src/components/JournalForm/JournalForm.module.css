@@ -6,7 +6,7 @@
 
 .journal-form__title {
     border: none;
-    background: none;
+    background: #272727;
     font-size: 2rem;
     border-bottom: 1px solid #272727;
     color: white;
@@ -28,4 +28,14 @@
 .invalid {
     border: 1px solid red;
     color: rgb(161, 38, 38);
+}
+
+input,
+textarea {
+    width: 100%;
+    border: none;
+    border-radius: 8px;
+    background: #272727;
+    color: white;
+    padding: 8px 12px;
 }
