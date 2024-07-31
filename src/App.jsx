@@ -10,11 +10,7 @@ import JournalForm from './components/JournalForm/JournalForm.jsx';
 import {useEffect, useState} from 'react';
 
 function App() {
-	const INITIAL_DATA = [
-
-	];
-
-	const [data, setData] = useState(INITIAL_DATA);
+	const [data, setData] = useState([]);
 
 	useEffect(() => {
 		const data = JSON.parse(localStorage.getItem('data'));
