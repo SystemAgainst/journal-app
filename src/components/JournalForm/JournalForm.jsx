@@ -3,6 +3,7 @@ import { Button } from '../Button/Button.jsx';
 import {useEffect, useReducer, useRef} from 'react';
 import {formReducer, INITIAL_STATE} from './JournalForm.state.js';
 import Input from '../Input/Input.jsx';
+import {UserContext} from '../../context/user.context.js';
 
 function JournalForm({ onSubmit }) {
 	const [formState, dispatchForm] = useReducer(formReducer, INITIAL_STATE);
@@ -57,46 +58,49 @@ function JournalForm({ onSubmit }) {
 	const onChange = (e) => dispatchForm({ type: 'SET_VALUE', payload: { [e.target.name]: e.target.value } });
 
 	return (
-		<>
-			<form className={styles['journal-form']} onSubmit={addJournalItem}>
-				<div>
-					<Input
-						type="text"
-						name="title"
-						appearance="title"
-						value={values.title}
+		<UserContext.Consumer>
+			{(context) => (
+				<form className={styles['journal-form']} onSubmit={addJournalItem}>
+					{context.userId}
+					<div>
+						<Input
+							type="text"
+							name="title"
+							appearance="title"
+							value={values.title}
+							onChange={onChange}
+							ref={titleRef}
+							isValid={isValid.title}
+						/>
+					</div>
+					<div className={styles['journal-form__row']}>
+						<label htmlFor="date" className={styles['journal-form__label']}>
+							Дата
+						</label>
+						<Input
+							type="date"
+							name="date"
+							id="date"
+							appearance="date"
+							value={values.date}
+							onChange={onChange}
+							ref={dateRef}
+							isValid={isValid.date}
+						/>
+					</div>
+					<textarea
+						name="text"
+						cols="30"
+						rows="10"
+						className={`${styles['journal-form__textarea']} ${isValid.text ? '' : styles['journal-form_invalid']}`}
+						value={values.text}
 						onChange={onChange}
-						ref={titleRef}
-						isValid={isValid.title}
+						ref={textRef}
 					/>
-				</div>
-				<div className={styles['journal-form__row']}>
-					<label htmlFor="date" className={styles['journal-form__label']}>
-						Дата
-					</label>
-					<Input
-						type="date"
-						name="date"
-						id="date"
-						appearance="date"
-						value={values.date}
-						onChange={onChange}
-						ref={dateRef}
-						isValid={isValid.date}
-					/>
-				</div>
-				<textarea
-					name="text"
-					cols="30"
-					rows="10"
-					className={`${styles['journal-form__textarea']} ${isValid.text ? '' : styles['journal-form_invalid']}`}
-					value={values.text}
-					onChange={onChange}
-					ref={textRef}
-				/>
-				<Button text="Сохранить" isAccent />
-			</form>
-		</>
+					<Button text="Сохранить" isAccent/>
+				</form>
+			)}
+		</UserContext.Consumer>
 	);
 }
 
