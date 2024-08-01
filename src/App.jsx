@@ -24,8 +24,7 @@ function App() {
 
 	const addItem = (item) => {
 		setData([...mapItems(data), {
-			title: item.title,
-			text: item.text,
+			...item,
 			date: new Date(item.date),
 			id: +data.length + 1
 		}]);
