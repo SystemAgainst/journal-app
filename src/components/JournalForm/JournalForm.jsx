@@ -1,5 +1,5 @@
 import styles from './JournalForm.module.css';
-import { Button } from '../Button/Button.jsx';
+import Button from '../Button/Button.jsx';
 import {useContext, useEffect, useReducer, useRef} from 'react';
 import {formReducer, INITIAL_STATE} from './JournalForm.state.js';
 import Input from '../Input/Input.jsx';

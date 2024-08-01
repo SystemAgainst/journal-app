@@ -20,6 +20,8 @@ function mapItems (items){
 }
 
 function App() {
+	console.log('App');
+
 	const [data, setData] = useLocaleStorageHook('data');
 
 	const addItem = (item) => {

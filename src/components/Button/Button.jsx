@@ -1,8 +1,10 @@
 import style from './Button.module.css';
 import cn from 'classnames';
+import {memo} from 'react';
 
+function Button({ children = 'Сохранить', onClick, isAccent }) {
+	console.log('Button');
 
-export function Button({ children = 'Сохранить', onClick, isAccent }) {
 	return (
 		<button
 			className={cn(style.button, {[style.accent]: isAccent})}
@@ -12,3 +14,5 @@ export function Button({ children = 'Сохранить', onClick, isAccent }) {
 		</button>
 	);
 }
+
+export default memo(Button);
