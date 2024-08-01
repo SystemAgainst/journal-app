@@ -5,9 +5,8 @@ import Header from './components/Header/Header.jsx';
 import JournalList from './components/JournalList/JournalList.jsx';
 import JournalAddButton from './components/JournalAddButton/JournalAddButton.jsx';
 import JournalForm from './components/JournalForm/JournalForm.jsx';
-import {useLocaleStorageHook} from './hooks/useLocaleStorage.hook.js';
-import {UserContext} from './context/user.context.js';
-import {useState} from 'react';
+import { useLocaleStorageHook } from './hooks/useLocaleStorage.hook.js';
+import { UserContextProvider } from './context/user.context.jsx';
 
 function mapItems (items){
 	if (!items) {
@@ -21,7 +20,6 @@ function mapItems (items){
 }
 
 function App() {
-	const [userId, setUserId] = useState(1);
 	const [data, setData] = useLocaleStorageHook('data');
 
 	const addItem = (item) => {
@@ -34,7 +32,7 @@ function App() {
 	};
 
 	return (
-		<UserContext.Provider value={{ userId, setUserId }}>
+		<UserContextProvider>
 			<div className={wrapper}>
 				<LeftPanel>
 					<Header/>
@@ -45,7 +43,7 @@ function App() {
 					<JournalForm onSubmit={addItem}/>
 				</Body>
 			</div>
-		</UserContext.Provider>
+		</UserContextProvider>
 	);
 }
 

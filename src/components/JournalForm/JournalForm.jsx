@@ -3,7 +3,7 @@ import { Button } from '../Button/Button.jsx';
 import {useContext, useEffect, useReducer, useRef} from 'react';
 import {formReducer, INITIAL_STATE} from './JournalForm.state.js';
 import Input from '../Input/Input.jsx';
-import {UserContext} from '../../context/user.context.js';
+import {UserContext} from '../../context/user.context.jsx';
 
 function JournalForm({ onSubmit }) {
 	const [formState, dispatchForm] = useReducer(formReducer, INITIAL_STATE);

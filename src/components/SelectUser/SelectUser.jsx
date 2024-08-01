@@ -1,5 +1,5 @@
 import {useContext} from 'react';
-import { UserContext } from '../../context/user.context.js';
+import { UserContext } from '../../context/user.context.jsx';
 
 function SelectUser() {
 	const { userId, setUserId } = useContext(UserContext);
