@@ -7,6 +7,7 @@ import JournalAddButton from './components/JournalAddButton/JournalAddButton.jsx
 import JournalForm from './components/JournalForm/JournalForm.jsx';
 import {useLocaleStorageHook} from './hooks/useLocaleStorage.hook.js';
 import {UserContext} from './context/user.context.js';
+import {useState} from 'react';
 
 function mapItems (items){
 	if (!items) {
@@ -20,6 +21,7 @@ function mapItems (items){
 }
 
 function App() {
+	const [userId, setUserId] = useState(1);
 	const [data, setData] = useLocaleStorageHook('data');
 
 	const addItem = (item) => {
@@ -32,7 +34,7 @@ function App() {
 	};
 
 	return (
-		<UserContext.Provider value={{ userId: 1 }}>
+		<UserContext.Provider value={{ userId, setUserId }}>
 			<div className={wrapper}>
 				<LeftPanel>
 					<Header/>
