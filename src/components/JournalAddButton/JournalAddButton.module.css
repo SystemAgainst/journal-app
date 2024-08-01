@@ -1,4 +1,11 @@
 .journal-add {
-    padding: 10px;
+    padding: 20px 10px;
+    border-radius: 8px;
     text-align: center;
+    scale: 1;
+    transition: scale .3s  ease-in-out;
+}
+
+.journal-add:hover {
+    scale: 1.1;
 }
