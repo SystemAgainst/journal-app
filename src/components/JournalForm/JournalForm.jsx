@@ -19,13 +19,13 @@ function JournalForm({ data, onSubmit, onDelete }) {
 	const focusError = (isValid) => {
 		switch (true) {
 		case !isValid.title:
-			titleRef.current.focus();
+			titleRef.current?.focus();
 			break;
 		case !isValid.date:
-			dateRef.current.focus();
+			dateRef.current?.focus();
 			break;
 		case isValid.text:
-			textRef.current.focus();
+			textRef.current?.focus();
 			break;
 		}
 	};
@@ -63,10 +63,13 @@ function JournalForm({ data, onSubmit, onDelete }) {
 	};
 
 	useEffect(() => {
+		dispatchForm({ type: 'CLEAR' });
 		dispatchForm({ type: 'SET_VALUE', payload: { userId } });
 	}, [userId]);
 
-	const onChange = (e) => dispatchForm({ type: 'SET_VALUE', payload: { [e.target.name]: e.target.value } });
+	const onChange = (e) => {
+		dispatchForm({ type: 'SET_VALUE', payload: { [e.target.name]: e.target.value } });
+	};
 
 	const deleteJournalItem = () => {
 		onDelete(data.id);
