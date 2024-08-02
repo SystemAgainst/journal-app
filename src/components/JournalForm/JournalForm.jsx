@@ -54,8 +54,12 @@ function JournalForm({ data, onSubmit, onDelete }) {
 	}, [isFormReadyToSubmit, values, onSubmit, userId]);
 
 	useEffect(() => {
+		if (!data) {
+			dispatchForm({ type: 'CLEAR' });
+			dispatchForm({ type: 'SET_VALUE', payload: { userId } });
+		}
 		dispatchForm({ type: 'SET_VALUE', payload: { ...data } });
-	}, [data]);
+	}, [data, userId]);
 
 	const addJournalItem = (e) => {
 		e.preventDefault();
@@ -90,7 +94,7 @@ function JournalForm({ data, onSubmit, onDelete }) {
 					ref={titleRef}
 					isValid={isValid.title}
 				/>
-				{data.id &&
+				{data?.id &&
 					<button type="button" className={styles['journal-form__btn']} onClick={deleteJournalItem}>
 						<img className={styles['journal-form__img']} src="/public/delete.svg" alt="remove icon"/>
 					</button>

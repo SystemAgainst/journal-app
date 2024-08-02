@@ -22,7 +22,7 @@ function mapItems (items){
 
 function App() {
 	const [data, setData] = useLocaleStorageHook('data');
-	const [selectedItem, setSelectedItem] = useState({});
+	const [selectedItem, setSelectedItem] = useState(null);
 
 	const addItem = (item) => {
 		if (!item.id) {
@@ -51,7 +51,7 @@ function App() {
 			<div className={wrapper}>
 				<LeftPanel>
 					<Header/>
-					<JournalAddButton/>
+					<JournalAddButton clearForm={() => setSelectedItem(null)} />
 					<JournalList items={mapItems(data)} setItem={setSelectedItem}/>
 				</LeftPanel>
 				<Body>
