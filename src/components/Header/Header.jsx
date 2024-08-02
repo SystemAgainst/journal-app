@@ -7,7 +7,6 @@ const LOGO_LIST = ['vite.svg', 'cloud-rain.svg'];
 
 
 function Header() {
-	console.log('Header');
 	const [logoIdx, setLogoIdx] = useState(0);
 
 	const toggleLogo = () => {

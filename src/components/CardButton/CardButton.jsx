@@ -1,10 +1,10 @@
 import style from './CardButton.module.css';
 import cn from 'classnames';
 
-function CardButton({ children, className }) {
+function CardButton({ children, className, ...props }) {
 	const newClass = 'card-button ' + (className || '');
 	return (
-		<button className={cn(newClass, style['card-button'])}>
+		<button {...props} className={cn(newClass, style['card-button'])}>
 			{children}
 		</button>
 	);
