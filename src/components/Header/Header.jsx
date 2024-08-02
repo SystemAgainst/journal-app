@@ -1,5 +1,5 @@
 import SelectUser from '../SelectUser/SelectUser.jsx';
-import {useCallback, useState} from 'react';
+import { useState } from 'react';
 import Logo from '../Logo/Logo.jsx';
 import Button from '../Button/Button.jsx';
 
@@ -10,13 +10,13 @@ function Header() {
 	console.log('Header');
 	const [logoIdx, setLogoIdx] = useState(0);
 
-	const toggleLogo = useCallback(() => {
+	const toggleLogo = () => {
 		setLogoIdx((prev) => Number(!prev));
-	}, []);
+	};
 
 	return (
 		<>
-			<Logo image={LOGO_LIST[0]} />
+			<Logo image={LOGO_LIST[logoIdx]} />
 			<SelectUser />
 			<Button isAccent onClick={toggleLogo}>Изменить логотип</Button>
 		</>
